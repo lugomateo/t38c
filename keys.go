@@ -143,9 +143,9 @@ func (ks *Keys) Stats(ctx context.Context, keys ...string) ([]KeyStats, error) {
 }
 
 // TTL get a timeout on an id.
-func (ks *Keys) TTL(ctx context.Context, key, objectID string) (int, error) {
+func (ks *Keys) TTL(ctx context.Context, key, objectID string) (float64, error) {
 	var resp struct {
-		TTL int `json:"ttl"`
+		TTL float64 `json:"ttl"`
 	}
 
 	err := ks.client.jExecute(ctx, &resp, "TTL", key, objectID)
